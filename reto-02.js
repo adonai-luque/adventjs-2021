@@ -1,11 +1,6 @@
 function listGifts(letter) {
-  const giftArray = letter.trim().split(/ +/);
-  const giftCount = {};
-  giftArray.forEach((g) => {
-    if (g.indexOf("_") !== 0) {
-      let count = giftCount[g];
-      giftCount[g] = count ? count + 1 : 1;
-    }
-  });
+  const giftArray = letter.match(/\b(?!_)[a-záéíóúü]+\b/g)
+  const giftCount = {}
+  giftArray.forEach((g) => { giftCount[g] = (giftCount[g] || 0) + 1 });
   return giftCount;
 }
